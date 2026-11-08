@@ -1,24 +1,22 @@
-#include <unordered_map>
+
 
 class Solution {
 public:
     bool hasDuplicate(vector<int>& nums) {
 
-        std::unordered_map<int, int> hash;
+        std::unordered_map<int,int> map{};
 
-        for (int i = 0; i < nums.size(); ++i)
+        for (std::size_t i{}; i < nums.size(); ++i)
         {
-
-            if (hash.find(nums[i]) != hash.end())
+            if (map[nums[i]] == 1)
             {
                 return true;
             }
 
-            hash.insert({nums[i], i});
+            ++map[nums[i]];
         }
 
         return false;
-
         
     }
 };
